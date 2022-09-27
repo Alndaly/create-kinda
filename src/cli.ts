@@ -20,8 +20,8 @@ if (!semver.satisfies(process.version, requiredVersion)) {
 }
 
 program
-	.name('kinda-cli')
-	.description(`CLI to make developers' life easy.`)
+	.name('create-kinda')
+	.description(`Quickly make kinda based project.`)
 	// 配置版本号信息
 	.version(`v${packageJson.version}`)
 	.usage('<command> [option]');
@@ -49,34 +49,6 @@ program
 	)
 	.action((name, options) => {
 		create(name, options);
-	});
-
-// 本地开启服务命令
-// TODO 待完善
-program
-	// 定义命令和参数
-	.command('server')
-	// init命令介绍
-	.description('local server port')
-	.addOption(
-		new Option('-p --port <port>', 'choose the port of your local server')
-	)
-	.action((options) => {
-		server(options);
-	});
-
-// 打包命令
-// TODO 待完善
-program
-	// 定义命令和参数
-	.command('build')
-	// init命令介绍
-	.description('build optimized project')
-	.addOption(
-		new Option('-w --watch', 'keep watching file changes, rebuild when file changes')
-	)
-	.action((options) => {
-		build(options);
 	});
 
 program.parse(process.argv);

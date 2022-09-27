@@ -1,5 +1,6 @@
 import { getRepoList, getTagList } from '../common/utils/http.js';
 import { template_prefix, template_offer } from '../common/config/config.js';
+import { install } from '../common/utils/package.js';
 import ora from 'ora';
 import inquirer from 'inquirer';
 import util from 'util';
@@ -110,7 +111,7 @@ export class Generator {
 	// 2）调用下载方法
 	async download(repo: string, tag: string, targetDir: string) {
 		// 1）拼接下载地址
-		const requestUrl = `${template_offer.name}/${repo}${tag?'#'+tag:''}`;
+		const requestUrl = `${template_offer.name}/${repo}${tag ? '#' + tag : ''}`;
 		// 2）调用下载方法
 		await this.wrapLoading(
 			downloadGitRepoPro, // 远程下载方法
